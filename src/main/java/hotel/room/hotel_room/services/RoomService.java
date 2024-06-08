@@ -27,12 +27,18 @@ public class RoomService {
         return roomRepository.findByRoomStatus(status);
     }
 
-    public List<Room> findByRoomNumber(Integer roomNumber) {
+    public Room findByRoomNumber(Integer roomNumber) {
         return roomRepository.findByRoomNumber(roomNumber);
     }
 
     public Room createRoom(Room roomInput) {
         return roomRepository.save(roomInput);
+    }
+
+    public Room deleteByRoomNumber(Integer roomNumberInput) {
+        Room room = roomRepository.findByRoomNumber(roomNumberInput);
+        roomRepository.delete(room);
+        return room;
     }
 
 }
