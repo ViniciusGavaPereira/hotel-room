@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import hotel.room.hotel_room.dto.RoomDto;
 import hotel.room.hotel_room.entities.Room;
+import hotel.room.hotel_room.entities.RoomStatus;
 import hotel.room.hotel_room.services.RoomService;
 
 @Controller
@@ -33,4 +34,17 @@ public class RoomController {
         List<Room> result = roomService.findByName(name);
         return new ResponseEntity<List<RoomDto>>(RoomDto.roomConverter(result), HttpStatus.OK);
     }
+
+    @GetMapping("/status/{status}")
+    public ResponseEntity<List<RoomDto>> findByStatus(@PathVariable RoomStatus status) {
+        List<Room> result = roomService.findByStatus(status);
+        return new ResponseEntity<List<RoomDto>>(RoomDto.roomConverter(result), HttpStatus.OK);
+    }
+
+    @GetMapping("/roomNumber/{roomNumber}")
+    public ResponseEntity<List<RoomDto>> findByStatus(@PathVariable Integer roomNumber) {
+        List<Room> result = roomService.findByRoomNumber(roomNumber);
+        return new ResponseEntity<List<RoomDto>>(RoomDto.roomConverter(result), HttpStatus.OK);
+    }
+
 }
