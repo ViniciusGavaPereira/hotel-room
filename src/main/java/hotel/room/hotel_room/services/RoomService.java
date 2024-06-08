@@ -31,4 +31,8 @@ public class RoomService {
         return roomRepository.findByRoomNumber(roomNumber);
     }
 
+    public Room createRoom(Room roomInput) {
+        return roomRepository.save(roomInput);
+    }
+
 }

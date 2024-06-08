@@ -19,7 +19,7 @@ public class RoomDto {
     public RoomDto(Room room) {
         roomNumber = room.getRoomNumber();
         name = room.getName();
-        pricePerHour = room.getPrice();
+        pricePerHour = room.getPricePerHour();
         roomStatus = room.getRoomStatus();
     }
 
@@ -53,6 +53,12 @@ public class RoomDto {
 
     public void setRoomStatus(RoomStatus roomStatus) {
         this.roomStatus = roomStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "RoomDto [roomNumber=" + roomNumber + ", name=" + name + ", pricePerHour=" + pricePerHour
+                + ", roomStatus=" + roomStatus + "]";
     }
 
     public static List<RoomDto> roomConverter(List<Room> room) {

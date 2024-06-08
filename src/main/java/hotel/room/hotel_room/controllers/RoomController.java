@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -45,6 +47,14 @@ public class RoomController {
     public ResponseEntity<List<RoomDto>> findByStatus(@PathVariable Integer roomNumber) {
         List<Room> result = roomService.findByRoomNumber(roomNumber);
         return new ResponseEntity<List<RoomDto>>(RoomDto.roomConverter(result), HttpStatus.OK);
+    }
+
+    @PostMapping("/create/v1/")
+    public ResponseEntity<?> createRoom(@RequestBody Room roomInput) {
+        roomService.createRoom(roomInput);
+
+        return new ResponseEntity<>(new RoomDto(roomInput).toString(), HttpStatus.CREATED);
+
     }
 
 }

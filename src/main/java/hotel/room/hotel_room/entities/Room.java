@@ -65,20 +65,20 @@ public class Room {
         this.name = name;
     }
 
-    public Float getPrice() {
-        return pricePerHour;
-    }
-
-    public void setPrice(Float price) {
-        this.pricePerHour = price;
-    }
-
     public RoomStatus getRoomStatus() {
         return roomStatus;
     }
 
     public void setRoomStatus(RoomStatus roomStatus) {
         this.roomStatus = roomStatus;
+    }
+
+    public Float getPricePerHour() {
+        return pricePerHour;
+    }
+
+    public void setPricePerHour(Float pricePerHour) {
+        this.pricePerHour = pricePerHour;
     }
 
 }
