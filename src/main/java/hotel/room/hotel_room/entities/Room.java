@@ -2,6 +2,7 @@ package hotel.room.hotel_room.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,16 +17,16 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "RoomNumber")
+    @Column(name = "RoomNumber", unique = true)
     private Integer roomNumber;
 
     @Column(name = "Name")
     private String name;
 
-    @Column(name = "Price")
-    private Float price;
+    @Column(name = "Price_per_hour")
+    private Float pricePerHour;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @Column(name = "RoomStatus")
     private RoomStatus roomStatus;
 
@@ -36,7 +37,7 @@ public class Room {
         this.id = id;
         this.roomNumber = roomNumber;
         this.name = name;
-        this.price = price;
+        this.pricePerHour = price;
         this.roomStatus = roomStatus;
     }
 
@@ -65,11 +66,11 @@ public class Room {
     }
 
     public Float getPrice() {
-        return price;
+        return pricePerHour;
     }
 
     public void setPrice(Float price) {
-        this.price = price;
+        this.pricePerHour = price;
     }
 
     public RoomStatus getRoomStatus() {

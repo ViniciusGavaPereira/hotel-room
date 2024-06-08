@@ -1,0 +1,26 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+  db:
+    container_name: mysql_room_db
+    image: mysql:8.0.31
+    volumes:
+      - dbbase:/var/lib/mysql
+    ports:
+      - "3309:3306"  
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: hotel_room_db
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin-room
+
+    depends_on:
+      - db
+    ports:
+      - 8002:80
+
+volumes:
+  dbbase:
