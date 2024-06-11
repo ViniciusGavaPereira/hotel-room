@@ -2,6 +2,7 @@ package hotel.room.hotel_room.controllers;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -9,10 +10,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import exception.CustomApplicationException;
 import hotel.room.hotel_room.dto.RoomDto;
 import hotel.room.hotel_room.entities.Room;
 import hotel.room.hotel_room.entities.RoomStatus;
@@ -55,6 +58,20 @@ public class RoomController {
         roomService.createRoom(roomInput);
 
         return new ResponseEntity<>(new RoomDto(roomInput).toString(), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update/")
+    public ResponseEntity<RoomDto> updateClient(@RequestBody Room roomInput) {
+
+        try {
+            Room result = roomService.updateRoom(roomInput);
+            return new ResponseEntity<RoomDto>(new RoomDto(result), HttpStatus.OK);
+
+        } catch (EmptyResultDataAccessException e) {
+            throw new CustomApplicationException("Room not found", HttpStatus.NOT_FOUND);
+
+        }
+
     }
 
     @DeleteMapping(value = "/delete/{id}")
