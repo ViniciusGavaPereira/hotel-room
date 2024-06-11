@@ -3,10 +3,9 @@ package hotel.room.hotel_room.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.stereotype.Service;
 
-import exception.CustomApplicationException;
 import hotel.room.hotel_room.entities.Room;
 import hotel.room.hotel_room.entities.RoomStatus;
 import hotel.room.hotel_room.repositories.RoomRepository;
