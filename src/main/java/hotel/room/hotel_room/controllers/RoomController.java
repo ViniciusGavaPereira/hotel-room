@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import exception.CustomApplicationException;
-import hotel.room.hotel_room.dto.RoomDto;
+import hotel.room.hotel_room.dtos.RoomDto;
 import hotel.room.hotel_room.entities.Room;
 import hotel.room.hotel_room.entities.RoomStatus;
 import hotel.room.hotel_room.services.RoomService;

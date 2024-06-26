@@ -1,4 +1,4 @@
-package hotel.room.hotel_room.dto;
+package hotel.room.hotel_room.dtos;
 
 import java.util.stream.Collectors;
 import java.util.List;

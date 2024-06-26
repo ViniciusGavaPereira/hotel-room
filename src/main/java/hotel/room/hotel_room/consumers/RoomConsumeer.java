@@ -1,10 +1,10 @@
-package hotel.room.hotel_room.consumer;
+package hotel.room.hotel_room.consumers;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
-import hotel.room.hotel_room.dto.RoomDto;
+import hotel.room.hotel_room.dtos.RoomDto;
 
 @Component
 public class RoomConsumeer {
