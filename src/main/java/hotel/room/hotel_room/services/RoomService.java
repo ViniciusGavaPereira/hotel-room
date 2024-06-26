@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import hotel.room.hotel_room.dtos.RoomDto;
 import hotel.room.hotel_room.entities.Room;
 import hotel.room.hotel_room.entities.RoomStatus;
 import hotel.room.hotel_room.repositories.RoomRepository;
@@ -32,8 +33,9 @@ public class RoomService {
         return roomRepository.findByRoomNumber(roomNumber);
     }
 
-    public Room createRoom(Room roomInput) {
-        return roomRepository.save(roomInput);
+    public Room createRoom(RoomDto roomInput) {
+        Room room = new Room(roomInput);
+        return roomRepository.save(room);
     }
 
     public Room deleteByRoomNumber(Integer roomNumberInput) {

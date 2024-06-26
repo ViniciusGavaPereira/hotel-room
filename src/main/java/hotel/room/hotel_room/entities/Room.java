@@ -1,5 +1,6 @@
 package hotel.room.hotel_room.entities;
 
+import hotel.room.hotel_room.dtos.RoomDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -39,6 +40,14 @@ public class Room {
         this.name = name;
         this.pricePerHour = price;
         this.roomStatus = roomStatus;
+    }
+
+    public Room(RoomDto roomDto) {
+
+        this.roomNumber = roomDto.getRoomNumber();
+        this.name = roomDto.getName();
+        this.pricePerHour = roomDto.getPricePerHour();
+        this.roomStatus = roomDto.getRoomStatus();
     }
 
     public Integer getId() {

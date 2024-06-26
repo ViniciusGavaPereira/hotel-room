@@ -53,13 +53,6 @@ public class RoomController {
         return new ResponseEntity<RoomDto>(new RoomDto(result), HttpStatus.OK);
     }
 
-    @PostMapping("/create/v1/")
-    public ResponseEntity<?> createRoom(@RequestBody Room roomInput) {
-        roomService.createRoom(roomInput);
-
-        return new ResponseEntity<>(new RoomDto(roomInput).toString(), HttpStatus.CREATED);
-    }
-
     @PutMapping("/update/")
     public ResponseEntity<RoomDto> updateClient(@RequestBody Room roomInput) {
 
