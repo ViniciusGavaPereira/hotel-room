@@ -35,6 +35,9 @@ public class RoomService {
 
     public Room createRoom(RoomDto roomInput) {
         Room room = new Room(roomInput);
+        System.out.println("Service roomInput: " + roomInput.toString());
+
+        System.out.println("Service room: " + room.toString());
         return roomRepository.save(room);
     }
 

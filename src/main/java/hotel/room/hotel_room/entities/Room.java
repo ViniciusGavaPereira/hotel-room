@@ -43,7 +43,7 @@ public class Room {
     }
 
     public Room(RoomDto roomDto) {
-
+        this.id = null;
         this.roomNumber = roomDto.getRoomNumber();
         this.name = roomDto.getName();
         this.pricePerHour = roomDto.getPricePerHour();
@@ -88,6 +88,12 @@ public class Room {
 
     public void setPricePerHour(Float pricePerHour) {
         this.pricePerHour = pricePerHour;
+    }
+
+    @Override
+    public String toString() {
+        return "Room [id=" + id + ", roomNumber=" + roomNumber + ", name=" + name + ", pricePerHour=" + pricePerHour
+                + ", roomStatus=" + roomStatus + "]";
     }
 
 }

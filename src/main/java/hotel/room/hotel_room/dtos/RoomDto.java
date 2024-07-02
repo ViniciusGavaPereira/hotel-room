@@ -23,6 +23,13 @@ public class RoomDto {
         roomStatus = room.getRoomStatus();
     }
 
+    public RoomDto(Integer roomNumber, String name, Float pricePerHour, String roomStatus) {
+        this.roomNumber = roomNumber;
+        this.name = name;
+        this.pricePerHour = pricePerHour;
+        this.roomStatus = RoomStatus.valueOf(roomStatus.toUpperCase());
+    }
+
     public Integer getRoomNumber() {
         return roomNumber;
     }
