@@ -34,6 +34,12 @@ public class RoomController {
         return RoomDto.roomConverter(result);
     }
 
+    @GetMapping("/id/{id}")
+    public ResponseEntity<RoomDto> findById(@PathVariable Integer id) {
+        Room result = roomService.findById(id);
+        return new ResponseEntity<RoomDto>(new RoomDto(result), HttpStatus.OK);
+    }
+
     @GetMapping("/name/{name}")
     public ResponseEntity<List<RoomDto>> findByName(@PathVariable String name) {
         List<Room> result = roomService.findByName(name);

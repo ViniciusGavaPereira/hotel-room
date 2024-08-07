@@ -8,6 +8,7 @@ import hotel.room.hotel_room.entities.RoomStatus;
 
 public class RoomDto {
 
+    private Integer id;
     private Integer roomNumber;
     private String name;
     private Float pricePerHour;
@@ -17,6 +18,7 @@ public class RoomDto {
     }
 
     public RoomDto(Room room) {
+        id = room.getId();
         roomNumber = room.getRoomNumber();
         name = room.getName();
         pricePerHour = room.getPricePerHour();
@@ -24,10 +26,19 @@ public class RoomDto {
     }
 
     public RoomDto(Integer roomNumber, String name, Float pricePerHour, String roomStatus) {
+
         this.roomNumber = roomNumber;
         this.name = name;
         this.pricePerHour = pricePerHour;
         this.roomStatus = RoomStatus.valueOf(roomStatus.toUpperCase());
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getRoomNumber() {
