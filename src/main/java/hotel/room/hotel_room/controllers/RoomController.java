@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -70,6 +71,17 @@ public class RoomController {
 
         }
 
+    }
+
+    @PatchMapping("/status/{id}/{statusUpdate}")
+    public ResponseEntity<?> updateRoomStatus(@PathVariable Integer id,
+            @PathVariable RoomStatus statusUpdate) {
+
+        roomService.updateRoomStatus(id, statusUpdate);
+
+        return new ResponseEntity<>(
+                "Status of room with id " + id.toString() + " changed to " + statusUpdate.toString(),
+                HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping(value = "/delete/{id}")

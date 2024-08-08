@@ -68,4 +68,12 @@ public class RoomService {
         return room;
     }
 
+    public Room updateRoomStatus(Integer id, RoomStatus roomStatus) {
+        Room room = roomRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Room not found"));
+
+        room.setRoomStatus(roomStatus);
+        return roomRepository.save(room);
+    }
+
 }
