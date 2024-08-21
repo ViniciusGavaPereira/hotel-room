@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,6 +51,14 @@ public class RoomController {
     public ResponseEntity<RoomDto> findByRoomNumber(@PathVariable Integer roomNumber) {
         Room result = roomService.findByRoomNumber(roomNumber);
         return new ResponseEntity<RoomDto>(new RoomDto(result), HttpStatus.OK);
+    }
+
+    @PostMapping("/create/v1/")
+    public ResponseEntity<?> createRoom(@RequestBody Room roomInput) {
+        roomService.createRoom(roomInput);
+
+        return new ResponseEntity<>(new RoomDto(roomInput).toString(), HttpStatus.CREATED);
+
     }
 
     @PutMapping("/update/")

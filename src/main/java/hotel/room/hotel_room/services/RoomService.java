@@ -32,17 +32,13 @@ public class RoomService {
         return roomRepository.findByNameContaining(name);
     }
 
-
     public Room findByRoomNumber(Integer roomNumber) {
         return roomRepository.findByRoomNumber(roomNumber);
     }
 
-    public Room createRoom(RoomDto roomInput) {
-        Room room = new Room(roomInput);
-        System.out.println("Service roomInput: " + roomInput.toString());
+    public Room createRoom(Room roomInput) {
 
-        System.out.println("Service room: " + room.toString());
-        return roomRepository.save(room);
+        return roomRepository.save(roomInput);
     }
 
     public Room deleteByRoomNumber(Integer roomNumberInput) {
@@ -62,7 +58,5 @@ public class RoomService {
 
         return room;
     }
-
-
 
 }
