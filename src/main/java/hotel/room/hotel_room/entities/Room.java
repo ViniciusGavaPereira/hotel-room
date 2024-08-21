@@ -3,8 +3,7 @@ package hotel.room.hotel_room.entities;
 import hotel.room.hotel_room.dtos.RoomDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,19 +26,15 @@ public class Room {
     @Column(name = "Price_per_hour")
     private Float pricePerHour;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "RoomStatus")
-    private RoomStatus roomStatus;
-
     public Room() {
     }
 
-    public Room(Integer id, Integer roomNumber, String name, Float price, RoomStatus roomStatus) {
+    public Room(Integer id, Integer roomNumber, String name, Float price) {
         this.id = id;
         this.roomNumber = roomNumber;
         this.name = name;
         this.pricePerHour = price;
-        this.roomStatus = roomStatus;
+
     }
 
     public Room(RoomDto roomDto) {
@@ -47,7 +42,7 @@ public class Room {
         this.roomNumber = roomDto.getRoomNumber();
         this.name = roomDto.getName();
         this.pricePerHour = roomDto.getPricePerHour();
-        this.roomStatus = roomDto.getRoomStatus();
+
     }
 
     public Integer getId() {
@@ -74,14 +69,6 @@ public class Room {
         this.name = name;
     }
 
-    public RoomStatus getRoomStatus() {
-        return roomStatus;
-    }
-
-    public void setRoomStatus(RoomStatus roomStatus) {
-        this.roomStatus = roomStatus;
-    }
-
     public Float getPricePerHour() {
         return pricePerHour;
     }
@@ -93,7 +80,7 @@ public class Room {
     @Override
     public String toString() {
         return "Room [id=" + id + ", roomNumber=" + roomNumber + ", name=" + name + ", pricePerHour=" + pricePerHour
-                + ", roomStatus=" + roomStatus + "]";
+                + "]";
     }
 
 }

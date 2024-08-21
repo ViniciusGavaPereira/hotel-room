@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import exception.CustomApplicationException;
 import hotel.room.hotel_room.dtos.RoomDto;
 import hotel.room.hotel_room.entities.Room;
-import hotel.room.hotel_room.entities.RoomStatus;
 import hotel.room.hotel_room.repositories.RoomRepository;
 
 @Service
@@ -33,9 +32,6 @@ public class RoomService {
         return roomRepository.findByNameContaining(name);
     }
 
-    public List<Room> findByStatus(RoomStatus status) {
-        return roomRepository.findByRoomStatus(status);
-    }
 
     public Room findByRoomNumber(Integer roomNumber) {
         return roomRepository.findByRoomNumber(roomNumber);
@@ -61,19 +57,12 @@ public class RoomService {
         room.setRoomNumber(roomInput.getRoomNumber());
         room.setName(roomInput.getName());
         room.setPricePerHour(roomInput.getPricePerHour());
-        room.setRoomStatus(roomInput.getRoomStatus());
 
         roomRepository.save(room);
 
         return room;
     }
 
-    public Room updateRoomStatus(Integer id, RoomStatus roomStatus) {
-        Room room = roomRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Room not found"));
 
-        room.setRoomStatus(roomStatus);
-        return roomRepository.save(room);
-    }
 
 }

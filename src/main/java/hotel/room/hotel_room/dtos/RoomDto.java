@@ -4,7 +4,6 @@ import java.util.stream.Collectors;
 import java.util.List;
 
 import hotel.room.hotel_room.entities.Room;
-import hotel.room.hotel_room.entities.RoomStatus;
 
 public class RoomDto {
 
@@ -12,7 +11,6 @@ public class RoomDto {
     private Integer roomNumber;
     private String name;
     private Float pricePerHour;
-    private RoomStatus roomStatus;
 
     public RoomDto() {
     }
@@ -22,7 +20,7 @@ public class RoomDto {
         roomNumber = room.getRoomNumber();
         name = room.getName();
         pricePerHour = room.getPricePerHour();
-        roomStatus = room.getRoomStatus();
+
     }
 
     public RoomDto(Integer roomNumber, String name, Float pricePerHour, String roomStatus) {
@@ -30,7 +28,6 @@ public class RoomDto {
         this.roomNumber = roomNumber;
         this.name = name;
         this.pricePerHour = pricePerHour;
-        this.roomStatus = RoomStatus.valueOf(roomStatus.toUpperCase());
     }
 
     public Integer getId() {
@@ -65,18 +62,9 @@ public class RoomDto {
         this.pricePerHour = pricePerHour;
     }
 
-    public RoomStatus getRoomStatus() {
-        return roomStatus;
-    }
-
-    public void setRoomStatus(RoomStatus roomStatus) {
-        this.roomStatus = roomStatus;
-    }
-
     @Override
     public String toString() {
-        return "RoomDto [roomNumber=" + roomNumber + ", name=" + name + ", pricePerHour=" + pricePerHour
-                + ", roomStatus=" + roomStatus + "]";
+        return "RoomDto [roomNumber=" + roomNumber + ", name=" + name + ", pricePerHour=" + pricePerHour + "]";
     }
 
     public static List<RoomDto> roomConverter(List<Room> room) {

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import exception.CustomApplicationException;
 import hotel.room.hotel_room.dtos.RoomDto;
 import hotel.room.hotel_room.entities.Room;
-import hotel.room.hotel_room.entities.RoomStatus;
 import hotel.room.hotel_room.services.RoomService;
 
 @Controller
@@ -47,12 +46,6 @@ public class RoomController {
         return new ResponseEntity<List<RoomDto>>(RoomDto.roomConverter(result), HttpStatus.OK);
     }
 
-    @GetMapping("/status/{status}")
-    public ResponseEntity<List<RoomDto>> findByStatus(@PathVariable RoomStatus status) {
-        List<Room> result = roomService.findByStatus(status);
-        return new ResponseEntity<List<RoomDto>>(RoomDto.roomConverter(result), HttpStatus.OK);
-    }
-
     @GetMapping("/roomNumber/{roomNumber}")
     public ResponseEntity<RoomDto> findByRoomNumber(@PathVariable Integer roomNumber) {
         Room result = roomService.findByRoomNumber(roomNumber);
@@ -73,17 +66,20 @@ public class RoomController {
 
     }
 
-    @PatchMapping("/status/{id}/{statusUpdate}")
-    public ResponseEntity<?> updateRoomStatus(@PathVariable Integer id,
-            @PathVariable RoomStatus statusUpdate) {
-
-        roomService.updateRoomStatus(id, statusUpdate);
-
-        return new ResponseEntity<>(
-                "Status of room with id " + id.toString() + " changed to " + statusUpdate.toString(),
-                HttpStatus.ACCEPTED);
-    }
-
+    /*
+     * @PatchMapping("/status/{id}/{statusUpdate}")
+     * public ResponseEntity<?> updateRoomStatus(@PathVariable Integer id,
+     * 
+     * @PathVariable RoomStatus statusUpdate) {
+     * 
+     * roomService.updateRoomStatus(id, statusUpdate);
+     * 
+     * return new ResponseEntity<>(
+     * "Status of room with id " + id.toString() + " changed to " +
+     * statusUpdate.toString(),
+     * HttpStatus.ACCEPTED);
+     * }
+     */
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<?> deleteRoom(@PathVariable Integer id) {
         roomService.deleteByRoomNumber(id);
